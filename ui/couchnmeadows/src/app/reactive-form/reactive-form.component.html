@@ -1,0 +1,110 @@
+<!-- Main Toolbar of the App -->    
+<mat-toolbar color="primary">    
+  <span>couchnmeadows</span>    
+  <span class="demo-toolbar"></span>    
+  <a style="width: 15em"  color= "accent" mat-raised-button href="https://github.com/ash160395/couch-n-meadows">Go To My Github</a>    
+  
+</mat-toolbar>    
+  
+<mat-card>    
+     
+  <mat-card-title>    
+      SignUp !
+  </mat-card-title>    
+  
+  <mat-card-content>    
+      <form [formGroup]="regiForm" (ngSubmit)="onFormSubmit(regiForm.value)">    
+          <table>    
+              <tr>    
+                  <td>    
+                      <mat-form-field class="demo-full-width">    
+                          <input formControlName="FirstName" matInput placeholder="First Name">    
+                      </mat-form-field>  
+                      <mat-error>  
+                        <span *ngIf="!regiForm.get('FirstName').valid && regiForm.get('FirstName').touched">Please enter First Name !!!</span>  
+                      </mat-error>  
+                  </td>
+                    
+                  <td>    
+                      <mat-form-field class="demo-full-width">    
+                          <input formControlName="LastName" matInput placeholder="Last Name">    
+                      </mat-form-field>  
+                      <mat-error>  
+                        <span *ngIf="!regiForm.get('LastName').valid && regiForm.get('LastName').touched">Please enter Last Name !!!</span>  
+                      </mat-error>  
+                  </td>    
+              </tr>    
+              <tr>    
+                  <td colspan="2">    
+                      <mat-form-field class="demo-full-width">    
+                          <textarea formControlName="Address" matInput placeholder="Address" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5"></textarea>    
+                      </mat-form-field>  
+                      <mat-error>  
+                        <span *ngIf="!regiForm.get('Address').valid && regiForm.get('Address').touched">Please enter proper address !!!</span>  
+                      </mat-error>    
+                  </td>    
+              </tr>    
+              <tr>    
+                  <td colspan="2">    
+                      <mat-form-field class="demo-full-width">    
+                          <input formControlName="DOB" matInput [matDatepicker]="picker" placeholder="Date of birth">    
+                          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>    
+                          <mat-datepicker touchUi="true" #picker></mat-datepicker>    
+                      </mat-form-field>    
+                      <mat-error>  
+                        <span *ngIf="!regiForm.get('DOB').valid && regiForm.get('DOB').touched">Please select any Date !!!</span>  
+                      </mat-error>
+                  </td>    
+              </tr>    
+              <tr>    
+                  <td>    
+                      <span>Gender</span><br><br>    
+                      <mat-radio-group formControlName="Gender">    
+                          <mat-radio-button style="margin:5px;" value="1">Male</mat-radio-button>    
+                          <mat-radio-button style="margin:5px;" value="2">Female</mat-radio-button>    
+                      </mat-radio-group>    
+                      <mat-error>  
+                        <span *ngIf="!regiForm.get('Gender').valid && regiForm.get('Gender').touched">Please select any gender !!!</span>  
+                      </mat-error> 
+                  </td>    
+                  <td><br>    
+                      <mat-form-field>     
+                          <mat-select formControlName="Blog" placeholder="Select Field" [(value)]="selected">    
+                              <mat-option>-- Select Any --</mat-option>    
+                              <mat-option value="1">Java</mat-option>    
+                              <mat-option value="2">Angular</mat-option>    
+                              <mat-option value="3">NodeJS</mat-option>    
+                          </mat-select> 
+                          <mat-error>  
+                            <span *ngIf="!regiForm.get('Blog').valid && regiForm.get('Blog').touched">Please select any item !!!</span>  
+                          </mat-error>   
+                      </mat-form-field>    
+                  </td>    
+              </tr>    
+              <tr>    
+                  <td colspan="2">    
+                      <mat-form-field class="demo-full-width">    
+                          <input formControlName="Email" matInput placeholder="Email">    
+                      </mat-form-field>    
+                      <mat-error>  
+                        <span *ngIf="!regiForm.get('Email').valid && regiForm.get('Email').touched">Enter proper Email !!!</span>  
+                      </mat-error> 
+                  </td>    
+              </tr>    
+              <tr>    
+                  <td colspan="2">    
+                    <mat-slide-toggle formControlName="IsAccepted" (change)="onChange($event)">Accept Terms & Conditions</mat-slide-toggle>  
+                  </td>    
+              </tr>    
+              <tr>    
+                  <td colspan="2" class="content-center">    
+                      <button style="margin:5px;" mat-raised-button color="accent" [disabled]="!regiForm.valid || IsAccepted==0">
+                        Submit</button> 
+    
+                  </td>    
+              </tr>    
+          </table>  
+            
+      </form>    
+  </mat-card-content>    
+</mat-card>   

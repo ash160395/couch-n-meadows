@@ -18,6 +18,8 @@ export class ReactiveFormComponent implements OnInit {
   Email:string='';  
   IsAccepted:number=0;
 
+  selected;
+
   constructor(private formBuilder : FormBuilder) { 
 
     // initialize form group
